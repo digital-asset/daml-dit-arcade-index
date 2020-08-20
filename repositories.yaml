@@ -1,0 +1,18 @@
+schema-version: 0.0.1
+version: 0.0.1
+repositories:
+  - type: github-release
+    owner: digital-asset
+    repository: daml-dit-integration-pricebot
+
+  - type: github-release
+    owner: digital-asset
+    repository: daml-dit-integration-slack
+
+  - type: github-release
+    owner: digital-asset
+    repository: daml-dit-integration-core
+
+  - type: github-release
+    owner: digital-asset
+    repository: daml-dit-integration-coindesk
