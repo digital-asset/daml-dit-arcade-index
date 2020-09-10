@@ -1,5 +1,5 @@
 schema_version: 0.0.1
-version: 0.0.2
+version: 0.1.0
 repositories:
   - type: github-release
     owner: digital-asset
@@ -16,3 +16,21 @@ repositories:
   - type: github-release
     owner: digital-asset
     repository: daml-dit-integration-coindesk
+
+  - type: github-release
+    owner: digital-asset
+    repository: daml-dit-integration-exberry
+
+  - type: github-release
+    owner: digital-asset
+    repository: dablchess
+
+  - type: github-release
+    owner: digital-asset
+    repository: dablchat
+
+  - type: github-release
+    owner: digital-asset
+    repository: danban
+
+
