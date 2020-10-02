@@ -33,4 +33,6 @@ repositories:
     owner: digital-asset
     repository: danban
 
-
+  - type: github-release
+    owner: digital-asset
+    repository: da-marketplace
