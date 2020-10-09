@@ -30,8 +30,12 @@ repositories:
     repository: dablchat
 
   - type: github-release
-    owner: digital-asset
-    repository: danban
+    owner: OpenSaaSame
+    repository: board
+
+  - type: github-release
+    owner: OpenSaaSame
+    repository: feed
 
   - type: github-release
     owner: digital-asset
