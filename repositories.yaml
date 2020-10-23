@@ -40,3 +40,7 @@ repositories:
   - type: github-release
     owner: digital-asset
     repository: da-marketplace
+  
+  - type: github-release
+    owner: LeventeBarczyDA
+    repository: daml-dit-integration-stripe
