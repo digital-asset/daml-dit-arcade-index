@@ -1,4 +1,4 @@
-VERSION=$(shell yq -r '.version' < repositories.yaml)
+VERSION=$(shell yq read repositories.yaml 'version'))
 
 TAG_NAME=v${VERSION}
 
