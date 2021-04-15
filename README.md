@@ -19,11 +19,13 @@ There are 5 straightforward tasks to getting your application ready and publishe
 
 > _Note_: Digital Asset reserves the right to make the ultimate determination of officially including your application in the arcade. However, an application DIT file can still be manually uploaded by any user to a Daml Hub ledger -- outside of the arcade -- so it may still prove a useful way of packaging, testing, and/or distributing non-official Daml Hub apps, depending on your use case.
 
+> To do so, follow steps [Configure](#Configure) and [Build](#Build) to obtain a DIT. The DIT can be uploaded to a new or existing Daml Hub ledger through the "Upload File" button.
+
 ## Configure
 
 DIT packages are configured with a `dabl-meta.yaml` file in the root directory of your application.
 
-At a minimum, this file needs a top-level `catalog` key with the following items:
+`dabl-meta.yaml` defines a `catalog` object that contains, for example, the following items:
 
 ```yaml
 catalog:
@@ -34,11 +36,13 @@ catalog:
     author: Digital Asset (Switzerland) GmbH
     url: https://github.com/digital-asset/dablchat  # Link to source code
     license: Apache-2.0
-    tags: [dabl-sample-app, application]  # These tags tell Daml Hub whether this package is an app or an integration
+    tags: [dabl-sample-app, application]  # Controls how Daml Hub displays the package - with these values, under the sample app section
     icon_file: dabl-chat.png      # File name for app icon
 ```
 
-The icon file name is resolved relative to a `pkg/` directory that must be in the root of your project. Make sure to create that directory and place your app icon in there, for `ddit` to find and bundle.
+For the complete set of possible values allowed under `catalog`, view the package metadata [class definition](https://github.com/digital-asset/daml-dit-api/blob/0f489954c391b4b796f2800e1dea20270a09e16e/daml_dit_api/package_metadata.py#L35-L50), which denotes each possible value name and its data type.
+
+Create a `pkg/` directory in your project's root to supply extra files to the DIT build. You may include the app icon file here, in either SVG or PNG format, and refer to it by name in the `dabl-meta.yaml` configuration.
 
 We strongly urge versioning your application with [semver](semver.org), as Daml Hub will default to providing the latest available version.
 
@@ -50,9 +54,7 @@ The tool can be easily integrated into existing build processes, e.g., `make` ta
 
 ## Release
 
-Once you've built a DIT file, you'll want to publish it by uploading it to the GitHub Releases page of your project's repository. This can be done in any manner convenient to you, either manually or through a CI process.
-
-Don't forget to include the built DIT as a binary file with the Release.
+Once you've built a DIT file, you'll want to publish it by uploading it to the GitHub Releases page of your project's repository. This can be done through ddit, with the `ddit release` command.
 
 ## List
 
@@ -64,12 +66,12 @@ After the DIT is uploaded to your repository's Releases page, submit a PR to thi
     repository: REPONAME
 ```
 
-and, after approval & merging, should soon begin showing up shortly.
+and, after approval & merging, should soon begin showing up within Daml Hub.
 
-Daml Hub subscribes to all of the Release pages specified in the index, and when it detects a new release that contains a DIT file, will make it available for deployment from the [Console](https://projectdabl.com/docs/quickstart/#sample-apps).
+Daml Hub subscribes to all of the Release pages specified in this index, and when it detects a new release that contains a DIT file, will make it available for deployment from the [Console](https://projectdabl.com/docs/quickstart/#sample-apps).
 
 ## Update
 
-After publishing your Daml Hub app, pushing updates to the arcade is easy and automatic. Simply increment your app's version tag in `dabl-meta.yaml`, and publish a new GH Release with an updated DIT file containing the new code.
+After publishing your Daml Hub app, pushing updates to the arcade is easy and automatic. Simply increment your app's version tag in `dabl-meta.yaml`, rebuild it with `ddit build`, and rerelease it as a new version with `ddit release`.
 
 The new version will become deployable from Daml Hub sometime within 30 minutes to an hour of the release.
