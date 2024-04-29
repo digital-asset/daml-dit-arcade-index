@@ -31,6 +31,10 @@ repositories:
 
   - type: github-release
     owner: digital-asset
+    repository: wallet-sample-app
+
+  - type: github-release
+    owner: digital-asset
     repository: dablchat
 
   - type: github-release
